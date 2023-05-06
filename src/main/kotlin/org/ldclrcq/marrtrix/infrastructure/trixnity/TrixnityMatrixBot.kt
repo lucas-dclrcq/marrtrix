@@ -55,7 +55,6 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
     fun onStop(@Observes event: ShutdownEvent) {
         LOG.info("Shutting down Matrix Bot")
         runBlocking { matrixClient.stopSync(wait = true) }
-//        scope.launch { matrixClient.stopSync() }
         scope.cancel()
     }
 
