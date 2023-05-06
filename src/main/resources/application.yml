@@ -1,0 +1,5 @@
+matrix:
+  password: password1234
+  room-id: '!media:matrix.org'
+  url: https://matrix.org
+  username: marrtrix
