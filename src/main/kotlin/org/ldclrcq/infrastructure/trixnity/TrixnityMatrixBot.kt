@@ -15,9 +15,13 @@ import net.folivo.trixnity.client.room.message.text
 import net.folivo.trixnity.client.store.repository.createInMemoryRepositoriesModule
 import net.folivo.trixnity.clientserverapi.model.authentication.IdentifierType
 import net.folivo.trixnity.core.model.RoomId
+import org.jboss.logging.Logger
+import org.ldclrcq.application.NotifyRadarrEventHandler
 import org.ldclrcq.domain.matrix.MatrixConfiguration
 import org.ldclrcq.domain.matrix.MatrixMessage
 import org.ldclrcq.domain.matrix.MatrixNotifier
+
+val LOG: Logger = Logger.getLogger(TrixnityMatrixBot::class.java)
 
 @ApplicationScoped
 class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : MatrixNotifier {
@@ -26,6 +30,7 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
     private lateinit var matrixClient: MatrixClient
 
     fun onStart(@Observes event: StartupEvent) {
+        LOG.info("Starting Matrix Bot")
         runBlocking {
             val repositoriesModule = createInMemoryRepositoriesModule()
             val mediaStore = InMemoryMediaStore()
@@ -48,6 +53,7 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
     }
 
     fun onStop(@Observes event: ShutdownEvent) {
+        LOG.info("Shutting down Matrix Bot")
         runBlocking { matrixClient.stopSync(wait = true) }
 //        scope.launch { matrixClient.stopSync() }
         scope.cancel()
