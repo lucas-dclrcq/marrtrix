@@ -1,4 +1,4 @@
-package org.ldclrcq.domain.matrix
+package org.ldclrcq.marrtrix.domain.matrix
 
 import io.smallrye.config.ConfigMapping
 

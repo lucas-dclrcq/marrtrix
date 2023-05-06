@@ -1,4 +1,4 @@
-package org.ldclrcq.infrastructure.trixnity
+package org.ldclrcq.marrtrix.infrastructure.trixnity
 
 import io.ktor.http.*
 import io.quarkus.runtime.ShutdownEvent
@@ -16,10 +16,10 @@ import net.folivo.trixnity.client.store.repository.createInMemoryRepositoriesMod
 import net.folivo.trixnity.clientserverapi.model.authentication.IdentifierType
 import net.folivo.trixnity.core.model.RoomId
 import org.jboss.logging.Logger
-import org.ldclrcq.application.NotifyRadarrEventHandler
-import org.ldclrcq.domain.matrix.MatrixConfiguration
-import org.ldclrcq.domain.matrix.MatrixMessage
-import org.ldclrcq.domain.matrix.MatrixNotifier
+import org.ldclrcq.marrtrix.application.NotifyRadarrEventHandler
+import org.ldclrcq.marrtrix.domain.matrix.MatrixConfiguration
+import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
+import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
 
 val LOG: Logger = Logger.getLogger(TrixnityMatrixBot::class.java)
 

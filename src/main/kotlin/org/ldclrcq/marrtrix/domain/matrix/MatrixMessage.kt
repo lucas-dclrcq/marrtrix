@@ -1,3 +1,3 @@
-package org.ldclrcq.domain.matrix
+package org.ldclrcq.marrtrix.domain.matrix
 
 data class MatrixMessage(val value: String)

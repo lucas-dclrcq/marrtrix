@@ -1,4 +1,4 @@
-package org.ldclrcq.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr
 
 enum class RadarrEventType {
     Test,

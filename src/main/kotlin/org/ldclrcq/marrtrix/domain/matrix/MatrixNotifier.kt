@@ -1,4 +1,4 @@
-package org.ldclrcq.domain.matrix
+package org.ldclrcq.marrtrix.domain.matrix
 
 interface MatrixNotifier {
     suspend fun sendMessage(notification: MatrixMessage)

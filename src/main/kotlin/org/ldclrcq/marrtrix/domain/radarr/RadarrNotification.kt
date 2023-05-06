@@ -1,6 +1,6 @@
-package org.ldclrcq.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr
 
-import org.ldclrcq.domain.matrix.MatrixMessage
+import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 
 class RadarrNotification private constructor(private val payload: RadarrPayload) {
 

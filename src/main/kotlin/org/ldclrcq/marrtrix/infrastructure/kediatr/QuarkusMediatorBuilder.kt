@@ -1,4 +1,4 @@
-package org.ldclrcq.infrastructure.kediatr
+package org.ldclrcq.marrtrix.infrastructure.kediatr
 
 import com.trendyol.kediatr.Mediator
 import com.trendyol.kediatr.MediatorBuilder

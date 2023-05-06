@@ -1,13 +1,13 @@
-package org.ldclrcq.application
+package org.ldclrcq.marrtrix.application
 
 import com.trendyol.kediatr.Command
 import com.trendyol.kediatr.CommandHandler
 import io.quarkus.runtime.Startup
 import jakarta.enterprise.context.ApplicationScoped
 import org.jboss.logging.Logger
-import org.ldclrcq.domain.matrix.MatrixNotifier
-import org.ldclrcq.domain.radarr.RadarrNotification
-import org.ldclrcq.domain.radarr.RadarrPayload
+import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
+import org.ldclrcq.marrtrix.domain.radarr.RadarrNotification
+import org.ldclrcq.marrtrix.domain.radarr.RadarrPayload
 
 data class NotifyRadarrEvent(val radarrPayload: RadarrPayload): Command
 
