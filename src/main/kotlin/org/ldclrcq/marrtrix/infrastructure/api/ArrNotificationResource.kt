@@ -7,7 +7,7 @@ import jakarta.ws.rs.Path
 import jakarta.ws.rs.Produces
 import jakarta.ws.rs.core.MediaType
 import org.ldclrcq.marrtrix.application.NotifyRadarrEvent
-import org.ldclrcq.marrtrix.domain.radarr.RadarrPayload
+import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrPayload
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

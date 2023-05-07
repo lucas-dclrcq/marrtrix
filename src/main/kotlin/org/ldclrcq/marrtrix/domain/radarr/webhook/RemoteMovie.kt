@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr.webhook
 
 data class RemoteMovie(
     val tmdbId: Int? = null,

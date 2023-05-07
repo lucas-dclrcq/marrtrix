@@ -6,8 +6,8 @@ import io.quarkus.runtime.Startup
 import jakarta.enterprise.context.ApplicationScoped
 import org.jboss.logging.Logger
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
-import org.ldclrcq.marrtrix.domain.radarr.RadarrNotification
-import org.ldclrcq.marrtrix.domain.radarr.RadarrPayload
+import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrNotification
+import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrPayload
 
 data class NotifyRadarrEvent(val radarrPayload: RadarrPayload): Command
 

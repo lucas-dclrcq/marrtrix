@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr.webhook
 
 enum class RadarrEventType {
     Test,

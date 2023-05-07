@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr.webhook
 
 import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 
@@ -8,6 +8,7 @@ class RadarrNotification private constructor(private val payload: RadarrPayload)
         RadarrEventType.Test -> formatMovieInfo("Test", payload)
         RadarrEventType.Download -> formatMovieInfo("New movie downloaded", payload)
         RadarrEventType.Grab -> formatMovieInfo("New movie grabbed", payload)
+        RadarrEventType.MovieAdded -> formatMovieInfo("Movie added", payload)
         else -> "Event ${payload.eventType} not handled"
     }.let { MatrixMessage(it) }
 

@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr
+package org.ldclrcq.marrtrix.domain.radarr.webhook
 
 data class Release(
     val quality: String? = null,

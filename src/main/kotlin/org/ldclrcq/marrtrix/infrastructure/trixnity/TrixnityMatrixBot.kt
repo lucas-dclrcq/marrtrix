@@ -1,6 +1,8 @@
 package org.ldclrcq.marrtrix.infrastructure.trixnity
 
 import io.ktor.http.*
+import io.quarkus.arc.profile.IfBuildProfile
+import io.quarkus.arc.profile.UnlessBuildProfile
 import io.quarkus.runtime.ShutdownEvent
 import io.quarkus.runtime.StartupEvent
 import jakarta.enterprise.context.ApplicationScoped
@@ -23,6 +25,7 @@ import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
 
 val LOG: Logger = Logger.getLogger(TrixnityMatrixBot::class.java)
 
+@UnlessBuildProfile("test")
 @ApplicationScoped
 class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : MatrixNotifier {
     private val scope = CoroutineScope(Dispatchers.Default)
