@@ -23,7 +23,7 @@ dependencies {
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     implementation("io.quarkus:quarkus-config-yaml")
 
-    implementation("com.trendyol:kediatr-core:2.0.0")
+    implementation("com.trendyol:kediatr-quarkus-starter:2.1.0")
     implementation("net.folivo", "trixnity-client", "3.6.1")
     implementation("io.ktor:ktor-client-core:2.3.0")
     implementation("io.ktor:ktor-client-cio:2.3.0")

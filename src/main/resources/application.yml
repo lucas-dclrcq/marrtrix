@@ -6,3 +6,9 @@ matrix:
 
 marrtrix:
   debug: false
+
+quarkus:
+  index-dependency:
+    kediatr:
+      group-id: com.trendyol
+      artifact-id: kediatr-quarkus-starter
