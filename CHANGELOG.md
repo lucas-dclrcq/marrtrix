@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.0.2](https://github.com/lucas-dclrcq/marrtrix/compare/0.0.1..0.0.2) - 2023-05-09
+#### Continuous Integration
+- create github release when releasing - ([d3ea5fc](https://github.com/lucas-dclrcq/marrtrix/commit/d3ea5fca56491ab81b4d3167524304eb1b687271)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
+- use github ref name to tag docker image - ([d978115](https://github.com/lucas-dclrcq/marrtrix/commit/d97811547002fcb86386e004730e5a44bb0296ca)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
+
+- - -
+
 ## [0.0.1](https://github.com/lucas-dclrcq/marrtrix/compare/a41f9dd7eb2c560a2f1f007681867c721e2a3563..0.0.1) - 2023-05-09
 #### Bug Fixes
 - **(deps)** update dependency io.strikt:strikt-core to v0.34.1 - ([3ef1e80](https://github.com/lucas-dclrcq/marrtrix/commit/3ef1e80c723e2240014defb805e1f7f9f82a7fb8)) - renovate[bot]
