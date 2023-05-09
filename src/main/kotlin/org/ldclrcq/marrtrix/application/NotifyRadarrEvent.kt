@@ -7,7 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped
 import org.jboss.logging.Logger
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
 import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrNotification
-import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrPayload
+import org.ldclrcq.marrtrix.domain.radarr.webhook.payload.RadarrPayload
 
 data class NotifyRadarrEvent(val radarrPayload: RadarrPayload): Command
 
@@ -18,6 +18,7 @@ val LOG: Logger = Logger.getLogger(NotifyRadarrEventHandler::class.java)
 class NotifyRadarrEventHandler(private val matrixNotifier: MatrixNotifier): CommandHandler<NotifyRadarrEvent> {
     override suspend fun handle(command: NotifyRadarrEvent) {
         LOG.info("Handling ${command.radarrPayload.eventType} Radarr event")
+
         val matrixMessage = RadarrNotification
             .fromPayload(command.radarrPayload)
             .buildMatrixMessage()

@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr.webhook
+package org.ldclrcq.marrtrix.domain.radarr.webhook.payload
 
 enum class RadarrEventType {
     Test,
@@ -9,5 +9,6 @@ enum class RadarrEventType {
     MovieFileDelete,
     Health,
     ApplicationUpdate,
-    MovieAdded
+    MovieAdded,
+    NullEventType
 }

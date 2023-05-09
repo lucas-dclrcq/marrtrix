@@ -1,4 +1,4 @@
-package org.ldclrcq.marrtrix.domain.radarr.webhook
+package org.ldclrcq.marrtrix.domain.radarr.webhook.payload
 
 data class RadarrPayload(
     val movie: Movie? = null,
