@@ -68,4 +68,6 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
             )
         }
     }
+
+    suspend fun isAlive() = matrixClient.api.server.getVersions().isSuccess
 }

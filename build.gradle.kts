@@ -23,6 +23,7 @@ dependencies {
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
     implementation("io.quarkus:quarkus-elytron-security-properties-file")
     implementation("io.quarkus:quarkus-config-yaml")
+    implementation("io.quarkus:quarkus-smallrye-health")
 
     implementation("com.trendyol:kediatr-quarkus-starter:2.1.0")
     implementation("net.folivo", "trixnity-client", "3.6.1")
