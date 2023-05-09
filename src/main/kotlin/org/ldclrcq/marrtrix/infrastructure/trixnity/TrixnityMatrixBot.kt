@@ -62,9 +62,9 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
     override suspend fun sendMessage(notification: MatrixMessage) {
         matrixClient.room.sendMessage(RoomId(matrixConfiguration.roomId())) {
             text(
-                body = notification.toBody(),
+                body = notification.toHtmlBody(),
                 format = "org.matrix.custom.html",
-                formattedBody = notification.toBody()
+                formattedBody = notification.toHtmlBody()
             )
         }
     }

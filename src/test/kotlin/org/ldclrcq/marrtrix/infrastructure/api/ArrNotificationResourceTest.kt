@@ -12,9 +12,8 @@ import jakarta.ws.rs.core.Response.Status
 import org.junit.jupiter.api.Test
 import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
-import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrMatrixMessage
+import org.ldclrcq.marrtrix.domain.radarr.webhook.message.RadarrMatrixMessage
 import strikt.api.expectThat
-import strikt.assertions.first
 import strikt.assertions.isEqualTo
 
 @QuarkusTest
@@ -68,7 +67,7 @@ class ArrNotificationResourceTest {
 
 
         expectThat(slot.captured as RadarrMatrixMessage) {
-            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 Test - Test Title (1970)")
+            get { title.toHtml() }.isEqualTo("\uD83C\uDFA5 Test - Test Title (1970)")
         }
     }
 
@@ -104,7 +103,46 @@ class ArrNotificationResourceTest {
 
 
         expectThat(slot.captured as RadarrMatrixMessage) {
-            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 Movie added - Mission: Impossible - Dead Reckoning Part One (2023)")
+            get { title.toHtml() }.isEqualTo("\uD83C\uDFA5 Movie added - Mission: Impossible - Dead Reckoning Part One (2023)")
+        }
+    }
+
+    @Test
+    @TestSecurity(user = "marrtrix")
+    fun `Given Radarr movie added notification, should send message with valid overview`() {
+        // ARRANGE
+        val slot = slot<MatrixMessage>()
+        coEvery { matrixNotifier.sendMessage(notification = capture(slot)) } returns Unit
+        given().contentType(ContentType.JSON)
+            .and().body(
+                """
+                {
+  "movie": {
+    "id": 659,
+    "title": "Mission: Impossible - Dead Reckoning Part One",
+    "year": 2023,
+    "releaseDate": "2023-10-08",
+    "folderPath": "/media/Movies/Mission Impossible Dead Reckoning Part One (2023) [imdbid-tt9603212]",
+    "tmdbId": 575264,
+    "imdbId": "tt9603212",
+    "overview": "The seventh installment of the Mission: Impossible franchise."
+  },
+  "addMethod": "manual",
+  "eventType": "MovieAdded",
+  "instanceName": "Radarr",
+  "applicationUrl": ""
+}
+            """.trimIndent()
+            )
+            .`when`().post("/radarr")
+            .then().statusCode(Status.NO_CONTENT.statusCode)
+
+
+        expectThat(slot.captured as RadarrMatrixMessage) {
+            get { overview.toHtml() }.isEqualTo("""
+                <h5>Overview</h5>
+                The seventh installment of the Mission: Impossible franchise.
+            """.trimIndent())
         }
     }
 
@@ -141,7 +179,7 @@ class ArrNotificationResourceTest {
 
 
         expectThat(slot.captured as RadarrMatrixMessage) {
-            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 New movie grabbed - Mission: Impossible - Dead Reckoning Part One (2023)")
+            get { title.toHtml() }.isEqualTo("\uD83C\uDFA5 New movie grabbed - Mission: Impossible - Dead Reckoning Part One (2023)")
         }
     }
 
@@ -177,7 +215,7 @@ class ArrNotificationResourceTest {
             .then().statusCode(Status.NO_CONTENT.statusCode)
 
         expectThat(slot.captured as RadarrMatrixMessage) {
-            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 New movie downloaded - Mission: Impossible - Dead Reckoning Part One (2023)")
+            get { title.toHtml() }.isEqualTo("\uD83C\uDFA5 New movie downloaded - Mission: Impossible - Dead Reckoning Part One (2023)")
         }
     }
 
