@@ -1,16 +1,30 @@
 from_latest_tag = false
 ignore_merge_commits = false
-branch_whitelist = []
+
+branch_whitelist = [
+    "main"
+]
+
 pre_bump_hooks = []
-post_bump_hooks = []
+post_bump_hooks = [
+    "git push",
+    "git push origin {{version}}"
+]
+
 pre_package_bump_hooks = []
 post_package_bump_hooks = []
 
 [commit_types]
 
 [changelog]
+template = "remote"
+remote = "github.com"
+repository = "marrtrix"
+owner = "lucas-dclrcq"
 path = "CHANGELOG.md"
-authors = []
+authors = [
+    { signature = "Lucas Declercq", username = "lucas-dclrcq" },
+]
 
 [bump_profiles]
 
