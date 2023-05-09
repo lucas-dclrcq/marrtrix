@@ -57,7 +57,7 @@ jobs:
             ghcr.io/${{ github.repository }}:${{github.ref_name}}
 
       - name: Produce changelog for current release
-        run: cog changelog --at ${{ env.LATEST_TAG }} > /tmp/current_changelog.md
+        run: cog changelog --at ${{github.ref_name}} > /tmp/current_changelog.md
 
       - name: Create Release
         id: create_release
