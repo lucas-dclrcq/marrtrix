@@ -18,12 +18,18 @@ jobs:
         with:
           java-version: 17
           distribution: 'temurin'
-      -
-        name: Grant execute permission for gradlew
+
+      - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
+
+      - name: Download changelog tool
+        uses: cocogitto/cocogitto-action@v3.4
+        with:
+          release: false
+          check: false
 
       - name: Set up Docker Buildx
         id: buildx
@@ -46,6 +52,21 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: | 
+          tags: |
             ghcr.io/${{ github.repository }}:latest
             ghcr.io/${{ github.repository }}:${{github.ref_name}}
+
+      - name: Produce changelog for current release
+        run: cog changelog --at ${{ env.LATEST_TAG }} > /tmp/current_changelog.md
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{github.ref_name}}
+          release_name: ${{github.ref_name}}
+          body_path: /tmp/current_changelog.md
+          draft: false
+          prerelease: false
