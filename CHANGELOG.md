@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.0.3](https://github.com/lucas-dclrcq/marrtrix/compare/0.0.2..0.0.3) - 2023-05-09
+#### Continuous Integration
+- **(release)** use valid ref for producing changelog - ([ee6cf7f](https://github.com/lucas-dclrcq/marrtrix/commit/ee6cf7f83bf6b52b0ba1f8ed3f2f5ffd4d7fb126)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
+- **(renovate)** configure assignees & reviewers - ([3205eb5](https://github.com/lucas-dclrcq/marrtrix/commit/3205eb51ad2cdef5348a430014c30f7d3f775f3a)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
+
+- - -
+
 ## [0.0.2](https://github.com/lucas-dclrcq/marrtrix/compare/0.0.1..0.0.2) - 2023-05-09
 #### Continuous Integration
 - create github release when releasing - ([d3ea5fc](https://github.com/lucas-dclrcq/marrtrix/commit/d3ea5fca56491ab81b4d3167524304eb1b687271)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
