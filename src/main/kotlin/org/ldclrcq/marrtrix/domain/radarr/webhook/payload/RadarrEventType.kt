@@ -10,5 +10,5 @@ enum class RadarrEventType {
     Health,
     ApplicationUpdate,
     MovieAdded,
-    NullEventType
+    None
 }

@@ -1,7 +1,6 @@
 package org.ldclrcq.marrtrix.infrastructure.trixnity
 
 import io.ktor.http.*
-import io.quarkus.arc.profile.IfBuildProfile
 import io.quarkus.arc.profile.UnlessBuildProfile
 import io.quarkus.runtime.ShutdownEvent
 import io.quarkus.runtime.StartupEvent
@@ -18,7 +17,6 @@ import net.folivo.trixnity.client.store.repository.createInMemoryRepositoriesMod
 import net.folivo.trixnity.clientserverapi.model.authentication.IdentifierType
 import net.folivo.trixnity.core.model.RoomId
 import org.jboss.logging.Logger
-import org.ldclrcq.marrtrix.application.NotifyRadarrEventHandler
 import org.ldclrcq.marrtrix.domain.matrix.MatrixConfiguration
 import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
@@ -64,9 +62,9 @@ class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : 
     override suspend fun sendMessage(notification: MatrixMessage) {
         matrixClient.room.sendMessage(RoomId(matrixConfiguration.roomId())) {
             text(
-                body = notification.value,
-                format = "",
-                formattedBody = notification.value
+                body = notification.toBody(),
+                format = "org.matrix.custom.html",
+                formattedBody = notification.toBody()
             )
         }
     }

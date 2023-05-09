@@ -11,6 +11,7 @@ import jakarta.ws.rs.core.Response.Status
 import org.junit.jupiter.api.Test
 import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
+import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrMatrixMessage
 import strikt.api.expectThat
 import strikt.assertions.first
 import strikt.assertions.isEqualTo
@@ -64,8 +65,9 @@ class ArrNotificationResourceTest {
             .then().statusCode(Status.NO_CONTENT.statusCode)
 
 
-        expectThat(slot.captured.lines())
-            .first().isEqualTo("\uD83C\uDFA5 Test - Test Title (1970)")
+        expectThat(slot.captured as RadarrMatrixMessage) {
+            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 Test - Test Title (1970)")
+        }
     }
 
     @Test
@@ -98,8 +100,9 @@ class ArrNotificationResourceTest {
             .then().statusCode(Status.NO_CONTENT.statusCode)
 
 
-        expectThat(slot.captured.lines())
-            .first().isEqualTo("\uD83C\uDFA5 Movie added - Mission: Impossible - Dead Reckoning Part One (2023)")
+        expectThat(slot.captured as RadarrMatrixMessage) {
+            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 Movie added - Mission: Impossible - Dead Reckoning Part One (2023)")
+        }
     }
 
     @Test
@@ -132,8 +135,9 @@ class ArrNotificationResourceTest {
             .then().statusCode(Status.NO_CONTENT.statusCode)
 
 
-        expectThat(slot.captured.lines())
-            .first().isEqualTo("\uD83C\uDFA5 New movie grabbed - Mission: Impossible - Dead Reckoning Part One (2023)")
+        expectThat(slot.captured as RadarrMatrixMessage) {
+            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 New movie grabbed - Mission: Impossible - Dead Reckoning Part One (2023)")
+        }
     }
 
     @Test
@@ -165,10 +169,8 @@ class ArrNotificationResourceTest {
             .`when`().post("/radarr")
             .then().statusCode(Status.NO_CONTENT.statusCode)
 
-
-        expectThat(slot.captured.lines())
-            .first().isEqualTo("\uD83C\uDFA5 New movie downloaded - Mission: Impossible - Dead Reckoning Part One (2023)")
+        expectThat(slot.captured as RadarrMatrixMessage) {
+            get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 New movie downloaded - Mission: Impossible - Dead Reckoning Part One (2023)")
+        }
     }
-
-    fun MatrixMessage.lines() = this.value.lines()
 }
