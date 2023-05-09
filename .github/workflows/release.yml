@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '**'
+      - '*.*.*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: | 
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.tag }}
+            ghcr.io/${{ github.repository }}:${{github.ref_name}}
