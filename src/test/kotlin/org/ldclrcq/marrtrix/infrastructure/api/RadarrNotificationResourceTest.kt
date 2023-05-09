@@ -17,7 +17,7 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
 @QuarkusTest
-class ArrNotificationResourceTest {
+class RadarrNotificationResourceTest {
     @InjectMock
     @field: Default
     lateinit var matrixNotifier: MatrixNotifier
