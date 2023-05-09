@@ -8,7 +8,7 @@ import org.ldclrcq.marrtrix.domain.radarr.webhook.payload.RadarrEventType
 import org.ldclrcq.marrtrix.domain.radarr.webhook.payload.RadarrEventType.*
 import org.ldclrcq.marrtrix.domain.radarr.webhook.payload.RadarrPayload
 
-class RadarrEvent private constructor(radarrPayload: RadarrPayload) {
+class RadarrNotification private constructor(radarrPayload: RadarrPayload) {
     private val eventType: RadarrEventType
     private val movieTitle: String
     private val movieYear: String
@@ -21,7 +21,7 @@ class RadarrEvent private constructor(radarrPayload: RadarrPayload) {
         this.movieOverview = radarrPayload.movie?.overview ?: "No overview"
     }
 
-    fun buildMatrixMessage(): MatrixMessage {
+    fun buildMatrixNotification(): MatrixMessage {
         val title = eventType.buildTitle(this.movieTitle, this.movieYear)
         val overview = RadarrMatrixMessageOverview(this.movieOverview )
 
@@ -55,7 +55,7 @@ class RadarrEvent private constructor(radarrPayload: RadarrPayload) {
                 """.trimIndent()
 
     companion object {
-        fun fromPayload(payload: RadarrPayload) = RadarrEvent(payload)
+        fun fromPayload(payload: RadarrPayload) = RadarrNotification(payload)
     }
 }
 

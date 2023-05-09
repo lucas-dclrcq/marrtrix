@@ -33,10 +33,11 @@ Sends notification from Sonarr and Radarr to a matrix room
 ```
 docker -d run --restart=always \
 -p 8080:8080 \
--e MATRIX_URL=https://matrix.org \
--e MATRIX_USERNAME=marrtrix \
--e MATRIX_PASSWORD=Marrtrix123 \
--e MATRIX_ROOM_ID="\!WCoiyAvDnhUEYbsItv:matrix.org" \
+-e MARRTRIX_PASSWORD=AwesomePassword \
+-e MARRTRIX_MATRIX_URL=https://matrix.org \
+-e MARRTRIX_MATRIX_USERNAME=marrtrix \
+-e MARRTRIX_MATRIX_PASSWORD=Marrtrix123 \
+-e MARRTRIX_MATRIX_ROOM_ID="\!WCoiyAvDnhUEYbsItv:matrix.org" \
 marrtrix:latest
 ```
 
@@ -48,12 +49,14 @@ TODO
 
 You can configure Marrtrix using the following environment variables
 
-| Name            | Required | Default | Description                                                                       | Example                      |
-|-----------------|----------|---------|-----------------------------------------------------------------------------------|------------------------------|
-| MATRIX_URL      | true     |         | The base url of the matrix server                                                 | https://matrix.org           |
-| MATRIX_USERNAME | true     |         | A matrix username                                                                 | @user:matrix.org             |
-| MATRIX_PASSWORD | true     |         | A matrix password                                                                 | password1234                 |
-| MATRIX_ROOM_ID  | true     |         | The room internal id (in Element you'll find this id in Room settings > Advanced) | ie: !38748747DHDH:matrix.org |
+| Name                     | Required | Default | Description                                                                       |
+|--------------------------|----------|---------|-----------------------------------------------------------------------------------|
+| MARRTRIX_DEBUG           | false    | false   | Enable debug mode where all incoming json requests are logged                     |
+| MARRTRIX_PASSWORD        | true     |         | The password used to authenticate webhook requests using basic auth               |
+| MARRTRIX_MATRIX_URL      | true     |         | The base url of the matrix server                                                 |
+| MARRTRIX_MATRIX_USERNAME | true     |         | A matrix username                                                                 |
+| MARRTRIX_MATRIX_PASSWORD | true     |         | A matrix password                                                                 |
+| MARRTRIX_MATRIX_ROOM_ID  | true     |         | The room internal id (in Element you'll find this id in Room settings > Advanced) |
 
 ## Roadmap
 

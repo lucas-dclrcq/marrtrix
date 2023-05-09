@@ -6,7 +6,7 @@ import io.quarkus.runtime.Startup
 import jakarta.enterprise.context.ApplicationScoped
 import org.jboss.logging.Logger
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
-import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrEvent
+import org.ldclrcq.marrtrix.domain.radarr.webhook.RadarrNotification
 import org.ldclrcq.marrtrix.domain.radarr.webhook.payload.RadarrPayload
 
 data class NotifyRadarrEvent(val radarrPayload: RadarrPayload): Command
@@ -19,9 +19,9 @@ class NotifyRadarrEventHandler(private val matrixNotifier: MatrixNotifier): Comm
     override suspend fun handle(command: NotifyRadarrEvent) {
         LOG.info("Handling ${command.radarrPayload.eventType} Radarr event")
 
-        val matrixMessage = RadarrEvent
+        val matrixMessage = RadarrNotification
             .fromPayload(command.radarrPayload)
-            .buildMatrixMessage()
+            .buildMatrixNotification()
 
         matrixNotifier.sendMessage(matrixMessage)
     }

@@ -1,11 +1,10 @@
 marrtrix:
     debug: false
-
-matrix:
-    password: password1234
-    room-id: '!media:matrix.org'
-    url: https://matrix.org
-    username: marrtrix
+    matrix:
+        password: password1234
+        room-id: '!media:matrix.org'
+        url: https://matrix.org
+        username: marrtrix
 
 quarkus:
     http:

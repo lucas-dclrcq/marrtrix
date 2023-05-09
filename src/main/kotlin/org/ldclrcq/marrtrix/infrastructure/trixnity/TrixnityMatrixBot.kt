@@ -17,6 +17,7 @@ import net.folivo.trixnity.client.store.repository.createInMemoryRepositoriesMod
 import net.folivo.trixnity.clientserverapi.model.authentication.IdentifierType
 import net.folivo.trixnity.core.model.RoomId
 import org.jboss.logging.Logger
+import org.ldclrcq.marrtrix.domain.MarrtrixConfiguration
 import org.ldclrcq.marrtrix.domain.matrix.MatrixConfiguration
 import org.ldclrcq.marrtrix.domain.matrix.MatrixMessage
 import org.ldclrcq.marrtrix.domain.matrix.MatrixNotifier
@@ -25,10 +26,15 @@ val LOG: Logger = Logger.getLogger(TrixnityMatrixBot::class.java)
 
 @UnlessBuildProfile("test")
 @ApplicationScoped
-class TrixnityMatrixBot(private val matrixConfiguration: MatrixConfiguration) : MatrixNotifier {
+class TrixnityMatrixBot(marrtrixConfiguration: MarrtrixConfiguration) : MatrixNotifier {
+    private val matrixConfiguration: MatrixConfiguration
     private val scope = CoroutineScope(Dispatchers.Default)
 
     private lateinit var matrixClient: MatrixClient
+
+    init {
+        this.matrixConfiguration = marrtrixConfiguration.matrix()
+    }
 
     fun onStart(@Observes event: StartupEvent) {
         LOG.info("Starting Matrix Bot")
