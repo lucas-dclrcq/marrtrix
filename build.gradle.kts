@@ -21,6 +21,7 @@ dependencies {
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy-reactive")
     implementation("io.quarkus:quarkus-resteasy-reactive-jackson")
+    implementation("io.quarkus:quarkus-elytron-security-properties-file")
     implementation("io.quarkus:quarkus-config-yaml")
 
     implementation("com.trendyol:kediatr-quarkus-starter:2.1.0")
@@ -32,6 +33,7 @@ dependencies {
     testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.strikt:strikt-core:0.34.1")
     testImplementation("io.quarkiverse.mockk:quarkus-junit5-mockk:2.0.0")
+    testImplementation("io.quarkus:quarkus-test-security")
 }
 
 group = "org.ldclrcq"

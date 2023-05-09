@@ -4,6 +4,7 @@ import io.mockk.coEvery
 import io.mockk.slot
 import io.quarkiverse.test.junit.mockk.InjectMock
 import io.quarkus.test.junit.QuarkusTest
+import io.quarkus.test.security.TestSecurity
 import io.restassured.RestAssured.given
 import io.restassured.http.ContentType
 import jakarta.enterprise.inject.Default
@@ -23,6 +24,7 @@ class ArrNotificationResourceTest {
     lateinit var matrixNotifier: MatrixNotifier
 
     @Test
+    @TestSecurity(user = "marrtrix")
     fun `Given Radarr test notification, should send message with valid title`() {
         val slot = slot<MatrixMessage>()
         coEvery { matrixNotifier.sendMessage(notification = capture(slot))  } returns Unit
@@ -71,6 +73,7 @@ class ArrNotificationResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "marrtrix")
     fun `Given Radarr movie added notification, should send message with valid title`() {
         // ARRANGE
         val slot = slot<MatrixMessage>()
@@ -106,10 +109,12 @@ class ArrNotificationResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "marrtrix")
     fun `Given Radarr movie grabbed notification, should send message with valid title`() {
         // ARRANGE
         val slot = slot<MatrixMessage>()
         coEvery { matrixNotifier.sendMessage(notification = capture(slot)) } returns Unit
+
         given().contentType(ContentType.JSON)
             .and().body(
                 """
@@ -141,10 +146,12 @@ class ArrNotificationResourceTest {
     }
 
     @Test
+    @TestSecurity(user = "marrtrix")
     fun `Given Radarr movie downloaded notification, should send message with valid title`() {
         // ARRANGE
         val slot = slot<MatrixMessage>()
         coEvery { matrixNotifier.sendMessage(notification = capture(slot)) } returns Unit
+
         given().contentType(ContentType.JSON)
             .and().body(
                 """
@@ -172,5 +179,17 @@ class ArrNotificationResourceTest {
         expectThat(slot.captured as RadarrMatrixMessage) {
             get(RadarrMatrixMessage::title).isEqualTo("\uD83C\uDFA5 New movie downloaded - Mission: Impossible - Dead Reckoning Part One (2023)")
         }
+    }
+
+    @Test
+    fun `Calling radarr endpoint without basic auth, should fail with 401 response`() {
+        // ARRANGE
+        val slot = slot<MatrixMessage>()
+        coEvery { matrixNotifier.sendMessage(notification = capture(slot)) } returns Unit
+
+        given().contentType(ContentType.JSON)
+            .and().body("{}")
+            .`when`().post("/radarr")
+            .then().statusCode(Status.UNAUTHORIZED.statusCode)
     }
 }

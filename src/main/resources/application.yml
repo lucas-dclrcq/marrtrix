@@ -1,14 +1,30 @@
-matrix:
-  password: password1234
-  room-id: '!media:matrix.org'
-  url: https://matrix.org
-  username: marrtrix
-
 marrtrix:
-  debug: false
+    debug: false
+
+matrix:
+    password: password1234
+    room-id: '!media:matrix.org'
+    url: https://matrix.org
+    username: marrtrix
 
 quarkus:
-  index-dependency:
-    kediatr:
-      group-id: com.trendyol
-      artifact-id: kediatr-quarkus-starter
+    http:
+        auth:
+            basic: true
+    index-dependency:
+        kediatr:
+            artifact-id: kediatr-quarkus-starter
+            group-id: com.trendyol
+    security:
+        users:
+            embedded:
+                enabled: true
+                plain-text: true
+
+'%prod':
+    quarkus:
+        security:
+            users:
+                embedded:
+                    users:
+                        marrtrix: "${MARRTRIX_PASSWORD}"
