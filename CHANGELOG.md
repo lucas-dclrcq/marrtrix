@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [0.0.5](https://github.com/lucas-dclrcq/marrtrix/compare/0.0.4..0.0.5) - 2023-05-09
+#### Continuous Integration
+- **(release)** set write permission on content to github token - ([2353d0e](https://github.com/lucas-dclrcq/marrtrix/commit/2353d0ec8a2ae8cc02c8f55a86681e62369fdceb)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
+
+- - -
+
 ## [0.0.4](https://github.com/lucas-dclrcq/marrtrix/compare/0.0.3..0.0.4) - 2023-05-09
 #### Continuous Integration
 - **(release)** fetch all git refs on checkout - ([d0c7205](https://github.com/lucas-dclrcq/marrtrix/commit/d0c7205e544296a98d6d7751065f8caf0545cfbe)) - [@lucas-dclrcq](https://github.com/lucas-dclrcq)
