@@ -30,6 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.0")
     implementation("io.ktor:ktor-client-cio:2.3.0")
 
+    testImplementation("io.quarkus:quarkus-jacoco")
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.strikt:strikt-core:0.34.1")
