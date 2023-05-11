@@ -6,9 +6,10 @@
 <p align="center">
   <a href="https://github.com/lucas-dclrcq/marrtrix/actions"
     ><img
-      src="https://github.com/lucas-dclrcq/marrtrix/actions/workflows/build.yml/badge.svg?branch=main"
+      src="https://github.com/lucas-dclrcq/marrtrix/actions/workflows/development.yml/badge.svg?branch=main"
       alt="GitHub Actions workflow status"
   /></a>
+  <a href="https://sonarcloud.io/summary/new_code?id=lucas-dclrcq_marrtrix"><img src="https://sonarcloud.io/api/project_badges/measure?project=lucas-dclrcq_marrtrix&metric=alert_status"></a>
   <br />
   <a href="https://conventionalcommits.org"
     ><img
