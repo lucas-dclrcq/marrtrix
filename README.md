@@ -10,6 +10,9 @@
       alt="GitHub Actions workflow status"
   /></a>
   <a href="https://sonarcloud.io/summary/new_code?id=lucas-dclrcq_marrtrix"><img src="https://sonarcloud.io/api/project_badges/measure?project=lucas-dclrcq_marrtrix&metric=alert_status"></a>
+  <a href="https://codecov.io/gh/lucas-dclrcq/marrtrix" > 
+ <img src="https://codecov.io/gh/lucas-dclrcq/marrtrix/branch/main/graph/badge.svg?token=0TM5MJZC7O"/> 
+ </a>
   <br />
   <a href="https://conventionalcommits.org"
     ><img
