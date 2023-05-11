@@ -35,7 +35,7 @@ jobs:
 
       - name: Jacoco Report to PR
         id: jacoco
-        uses: madrapps/jacoco-report@v1.1
+        uses: madrapps/jacoco-report@v1.3
         if: github.event_name == 'pull_request'
         with:
           path: ${{ github.workspace }}/build/jacoco-report/jacoco.xml
