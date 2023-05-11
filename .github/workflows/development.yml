@@ -31,14 +31,14 @@ jobs:
         uses: 'actions/upload-artifact@v2'
         with:
           name: report.xml
-          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          path: ${{ github.workspace }}/build/jacoco-report/jacoco.xml
 
       - name: Jacoco Report to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.1
         if: github.event_name == 'pull_request'
         with:
-          path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+          path: ${{ github.workspace }}/build/jacoco-report/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
