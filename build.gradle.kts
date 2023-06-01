@@ -25,7 +25,7 @@ dependencies {
     implementation("io.quarkus:quarkus-config-yaml")
     implementation("io.quarkus:quarkus-smallrye-health")
 
-    implementation("com.trendyol:kediatr-quarkus-starter:2.1.0")
+    implementation("com.trendyol:kediatr-quarkus-starter:3.0.0")
     implementation("net.folivo", "trixnity-client", "3.6.1")
     implementation("io.ktor:ktor-client-core:2.3.0")
     implementation("io.ktor:ktor-client-cio:2.3.0")
