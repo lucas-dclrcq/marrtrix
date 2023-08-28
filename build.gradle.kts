@@ -34,7 +34,7 @@ dependencies {
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
     testImplementation("io.strikt:strikt-core:0.34.1")
-    testImplementation("io.quarkiverse.mockk:quarkus-junit5-mockk:2.0.0")
+    testImplementation("io.quarkiverse.mockk:quarkus-junit5-mockk:2.1.0")
     testImplementation("io.quarkus:quarkus-test-security")
 }
 
