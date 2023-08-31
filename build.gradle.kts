@@ -28,7 +28,7 @@ dependencies {
     implementation("com.trendyol:kediatr-quarkus-starter:2.1.0")
     implementation("net.folivo", "trixnity-client", "3.6.1")
     implementation("io.ktor:ktor-client-core:2.3.0")
-    implementation("io.ktor:ktor-client-cio:2.3.0")
+    implementation("io.ktor:ktor-client-cio:2.3.4")
 
     testImplementation("io.quarkus:quarkus-jacoco")
     testImplementation("io.quarkus:quarkus-junit5")
